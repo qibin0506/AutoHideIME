@@ -8,6 +8,10 @@
 
 AutoHideIME帮助你快速实现这样的需求。
 
+## 效果展示
+
+![](1.gif)
+
 ## 如何使用
 
 android studio用户在gradle配置中加入：
