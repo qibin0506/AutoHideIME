@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 
 public class HideIMEUtil {
 
-    public static void inject(Activity activity) {
+    public static void wrap(Activity activity) {
         ViewGroup contentParent = (ViewGroup) activity.findViewById(android.R.id.content);
-        inject(contentParent);
+        wrap(contentParent);
     }
 
-    public static void inject(Fragment fragment) {
+    public static void wrap(Fragment fragment) {
         ViewGroup contentParent = (ViewGroup) fragment.getView().getParent();
-       inject(contentParent);
+        wrap(contentParent);
     }
 
-    public static void inject(ViewGroup contentParent) {
+    public static void wrap(ViewGroup contentParent) {
         View content = contentParent.getChildAt(0);
         contentParent.removeView(content);
 
