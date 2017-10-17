@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import android.widget.EditText;
 
 /**
  * Created by qibin on 2016/6/2.
@@ -37,7 +38,7 @@ public class AutoHideIMEFrameLayout extends FrameLayout {
             Activity activity = (Activity) context;
             View focusView = activity.getCurrentFocus();
 
-            if (focusView != null && shouldHideInputMethod(focusView, ev)) {
+            if (shouldHideInputMethod(focusView, ev)) {
                 hideInputMethod(focusView);
             }
         }
@@ -46,6 +47,14 @@ public class AutoHideIMEFrameLayout extends FrameLayout {
     }
 
     private boolean shouldHideInputMethod(View focusView, MotionEvent event) {
+        if (focusView == null) {
+            return false;
+        }
+        
+        if (focusView instanceof EditText) {
+            return false;
+        }
+        
         Rect rect = new Rect();
         focusView.getHitRect(rect);
         if(rect.contains((int)event.getX(), (int)event.getY())) {
